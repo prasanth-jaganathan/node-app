@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: {{ .Values.appName }}-service
   annotations:
+    harness.io/service-type: ClusterIP
     harness.io/service: {{ .Values.appName }}-service
   labels:
     {{- include "node-app.labels" . | nindent 4 }}
