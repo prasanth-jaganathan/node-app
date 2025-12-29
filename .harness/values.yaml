@@ -13,3 +13,39 @@ service:
 
 nameOverride: ""
 fullnameOverride: ""
+
+virtualService:
+  enabled: true
+  nameOverride: "nginx-vs"
+  
+  # The domain names this service handles
+  hosts:
+    - "*.example.com"
+  
+  # The gateway(s) to attach to
+  gateways:
+    - nginx-gateway
+
+  # The actual routing logic
+  http:
+    # 1. Specific Path (Node.js App) - MUST come first
+    - match:
+        - uri:
+            prefix: /helloworld
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: node-app-service
+            port:
+              number: 80 # Points to the ClusterIP Service Port
+
+    # 2. Catch-all Path (Nginx) - Comes last
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: nginx-service
+            port:
+              number: 80
