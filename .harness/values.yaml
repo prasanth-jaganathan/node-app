@@ -6,7 +6,7 @@ image:
   repository: prasanth98/hello-world-node-app
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.1"
+  tag: <+pipeline.variables.releaseTag>
 
 service:
   type: ClusterIP
