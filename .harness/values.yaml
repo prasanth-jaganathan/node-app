@@ -1,0 +1,15 @@
+replicaCount: 2
+
+image:
+  repository: prasanth98/hello-world-node-app
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "0.0.1"
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080 # Matches your Node.js container port
+
+nameOverride: ""
+fullnameOverride: ""
