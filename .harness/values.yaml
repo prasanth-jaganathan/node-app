@@ -1,5 +1,7 @@
 replicaCount: 2
 
+appName: "node-app"
+
 image:
   repository: prasanth98/hello-world-node-app
   pullPolicy: IfNotPresent
