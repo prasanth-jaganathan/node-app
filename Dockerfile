@@ -1,4 +1,5 @@
 # Use a lightweight Node.js image
+# harness-test: testing GitHub Actions integration
 FROM node:20-slim
 
 # Create and change to the app directory
